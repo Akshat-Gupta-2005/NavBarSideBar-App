@@ -1,0 +1,140 @@
+/* SlidingSidebar.css */
+body {
+  margin: 0; /* Ensure no default body margin interferes */
+  font-family: sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px; /* Adjust width as needed */
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initially off-screen */
+  background-color: #f1f1f1; /* Light grey background */
+  overflow-x: hidden;
+  transition: 0.3s ease-in-out; /* Smooth sliding animation */
+  padding-top: 60px; /* Space for a potential close button or header inside */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure sidebar is on top */
+}
+
+.sidebar.open {
+  left: 0; /* Slide in */
+}
+
+.sidebar-content {
+  padding: 20px;
+  color: #333;
+}
+
+.sidebar-content h2 {
+  margin-top: 0;
+  color: #111;
+}
+
+.sidebar-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-content ul li {
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.sidebar-content ul li:hover {
+  background-color: #ddd; /* Hover effect for links */
+  border-radius: 4px;
+  padding-left: 8px; /* Indent on hover for better visual feedback */
+}
+
+
+.sidebar-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure toggle button is above sidebar when closed, and potentially above overlay */
+  border-radius: 5px;
+  font-size: 18px;
+  transition: left 0.3s ease-in-out, background-color 0.2s;
+}
+
+.sidebar-toggle.open {
+  left: 265px; /* Adjust to be next to the open sidebar */
+  /* Or, if you want it inside the sidebar:
+  left: auto;
+  right: 15px;
+  top: 15px;
+  position: absolute;
+  background-color: transparent;
+  color: #333;
+  */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 999; /* Below sidebar but above page content */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Example Usage in your App.js or another component */
+/*
+import React from 'react';
+import SlidingSidebar from './SlidingSidebar';
+import './App.css'; // Your main app styles
+
+function App() {
+  return (
+    <div className="App">
+      <SlidingSidebar>
+        <h2>Menu</h2>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact</li>
+        </ul>
+        <p>Some other content.</p>
+      </SlidingSidebar>
+      <div className="main-content">
+        <h1>Main Page Content</h1>
+        <p>This is the main content of the page. Click the button to open the sidebar.</p>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+*/
+
+/* Add to your App.css or a global stylesheet if using the example above */
+/*
+.main-content {
+  padding: 20px;
+  margin-left: 0;
+  transition: margin-left 0.3s ease-in-out;
+}
+*/
+
+/* Optional: If you want the main content to shift when the sidebar opens */
+/*
+.main-content.sidebar-open {
+  margin-left: 250px; // Same as sidebar width
+}
+*/
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+/* a { color: white; }  */
